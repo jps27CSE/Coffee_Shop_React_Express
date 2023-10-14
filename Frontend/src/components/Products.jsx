@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Product from "./Product";
+import { CoffeeStateContext } from "../Context/CoffeeContext";
 
 const Products = () => {
   const [coffeeData, setCoffeeData] = useState([]);
+  const { allCoffees } = useContext(CoffeeStateContext);
+
+  console.log(allCoffees);
 
   useEffect(() => {
     fetch("http://localhost:3000/allCoffees")

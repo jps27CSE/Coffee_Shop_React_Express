@@ -51,7 +51,9 @@ const Product = ({ coffee }) => {
           <Link to={`/coffee/${_id}`}>
             <button className="btn btn-primary mb-2">View</button>
           </Link>
-          <button className="btn btn-primary  mb-2">Edit</button>
+          <Link to={`/coffee/edit/${_id}`}>
+            <button className="btn btn-primary  mb-2">Edit</button>
+          </Link>
           <button
             onClick={() => handleDelete(_id)}
             className="btn btn-primary  mb-2"

@@ -6,6 +6,8 @@ import App from "./App";
 import Home from "./components/Home";
 import AddCoffee from "./components/AddCoffee";
 import CoffeeDetails from "./components/CoffeeDetails";
+import EditCoffee from "./components/EditCoffee";
+import CoffeeContext from "./Context/CoffeeContext";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +26,18 @@ const router = createBrowserRouter([
         path: "/coffee/:id",
         element: <CoffeeDetails />,
       },
+      {
+        path: "/coffee/edit/:id",
+        element: <EditCoffee />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CoffeeContext>
+      <RouterProvider router={router} />
+    </CoffeeContext>
   </React.StrictMode>
 );
