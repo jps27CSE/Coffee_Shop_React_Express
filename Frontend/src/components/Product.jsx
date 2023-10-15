@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { CoffeeStateContext } from "../Context/CoffeeContext";
 
 const Product = ({ coffee }) => {
   const { chef, name, photo, _id } = coffee;
+  const { allCoffees, setAllCoffees } = useContext(CoffeeStateContext);
 
   const handleDelete = (id) => {
     console.log(id);
@@ -24,6 +27,10 @@ const Product = ({ coffee }) => {
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              const remaining = allCoffees.filter(
+                (coffee) => coffee._id !== id
+              );
+              setAllCoffees(remaining);
             }
           });
       }

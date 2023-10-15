@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export const CoffeeStateContext = createContext(null);
 
 const CoffeeContext = ({ children }) => {
-  const [allCoffees, setAllCoffees] = useState("hello from context");
+  const [allCoffees, setAllCoffees] = useState([]);
 
   const contextValue = {
     allCoffees,
