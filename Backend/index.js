@@ -21,6 +21,7 @@ async function run() {
     await client.connect();
     const database = client.db("insertDB");
     const databaseCollection = database.collection("coffee_shop");
+    const UserDatabase = database.collection("UserCollection");
 
     app.get("/allCoffees", async (req, res) => {
       const data = databaseCollection.find();
@@ -55,6 +56,12 @@ async function run() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await databaseCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    app.post("/user", async (req, res) => {
+      const newUser = req.body;
+      const result = await UserDatabase.insertOne(newUser);
       res.send(result);
     });
 

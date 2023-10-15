@@ -10,6 +10,7 @@ import EditCoffee from "./components/EditCoffee";
 import CoffeeContext from "./Context/CoffeeContext";
 import SignUp from "./components/SignUp";
 import AuthProvider from "./Context/AuthProvider";
+import SignIn from "./components/SignIn";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/sign-up",
         element: <SignUp />,
+      },
+      {
+        path: "/login",
+        element: <SignIn />,
       },
     ],
   },
