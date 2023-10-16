@@ -22,7 +22,7 @@ const AddCoffee = () => {
       photo,
     };
 
-    fetch("http://localhost:3000/addCoffee", {
+    fetch("https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/addCoffee", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

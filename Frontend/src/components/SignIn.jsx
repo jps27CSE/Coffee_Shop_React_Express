@@ -16,7 +16,7 @@ const SignIn = () => {
         const update = result.user.metadata.lastSignInTime;
         const data = { email: email, lastLoggedIn: update };
 
-        fetch("http://localhost:3000/user", {
+        fetch("https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/user", {
           method: "PATCH",
           headers: {
             "content-type": "application/json",

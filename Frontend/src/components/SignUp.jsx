@@ -15,15 +15,18 @@ const SignUp = () => {
     createUser(email, password)
       .then((result) => {
         if (result) {
-          fetch("http://localhost:3000/user", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          })
+          fetch(
+            "https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/user",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email,
+              }),
+            }
+          )
             .then((res) => res.json())
             .then((data) => console.log(data));
         }

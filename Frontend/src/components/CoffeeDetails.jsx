@@ -10,7 +10,9 @@ const CoffeeDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:3000/coffee/${params.id}`)
+    fetch(
+      `https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/coffee/${params.id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCoffee(data);

@@ -4,7 +4,7 @@ const UsersTable = () => {
   const [users, setUsers] = useState();
   console.log(users);
   useEffect(() => {
-    fetch("http://localhost:3000/users")
+    fetch("https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {

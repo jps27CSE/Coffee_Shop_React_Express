@@ -7,7 +7,9 @@ const EditCoffee = () => {
   const [coffee, setCoffee] = useState(null);
   console.log(coffee);
   useEffect(() => {
-    fetch(`http://localhost:3000/coffee/${params.id}`)
+    fetch(
+      `https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/coffee/${params.id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCoffee(data);
@@ -36,13 +38,16 @@ const EditCoffee = () => {
       photo,
     };
 
-    fetch(`http://localhost:3000/coffee/${params.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newCoffeeData),
-    })
+    fetch(
+      `https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/coffee/${params.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCoffeeData),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged === true) {

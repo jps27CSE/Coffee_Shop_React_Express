@@ -6,7 +6,7 @@ const Products = () => {
   const { allCoffees, setAllCoffees } = useContext(CoffeeStateContext);
 
   useEffect(() => {
-    fetch("http://localhost:3000/allCoffees")
+    fetch("https://backend-9fe3gaoq2-jps27cses-projects.vercel.app/allCoffees")
       .then((res) => res.json())
       .then((data) => {
         setAllCoffees(data);
