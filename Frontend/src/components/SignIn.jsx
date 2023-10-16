@@ -13,6 +13,16 @@ const SignIn = () => {
     loginUser(email, password)
       .then((result) => {
         console.log(result);
+        const update = result.user.metadata.lastSignInTime;
+        const data = { email: email, lastLoggedIn: update };
+
+        fetch("http://localhost:3000/user", {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
         navigate("/");
       })
       .catch((error) => console.log(error.message));

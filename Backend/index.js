@@ -59,9 +59,27 @@ async function run() {
       res.send(result);
     });
 
+    app.get("/users", async (req, res) => {
+      const data = UserDatabase.find();
+      const result = await data.toArray();
+      res.send(result);
+    });
+
     app.post("/user", async (req, res) => {
       const newUser = req.body;
       const result = await UserDatabase.insertOne(newUser);
+      res.send(result);
+    });
+
+    app.patch("/user", async (req, res) => {
+      const updatedUser = req.body;
+      const filter = { email: updatedUser.email };
+      const updateDoc = {
+        $set: {
+          lastLoggedIn: updatedUser.lastLoggedIn,
+        },
+      };
+      const result = await UserDatabase.updateOne(filter, updateDoc);
       res.send(result);
     });
 

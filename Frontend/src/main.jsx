@@ -11,6 +11,7 @@ import CoffeeContext from "./Context/CoffeeContext";
 import SignUp from "./components/SignUp";
 import AuthProvider from "./Context/AuthProvider";
 import SignIn from "./components/SignIn";
+import UsersTable from "./components/UsersTable";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <SignIn />,
+      },
+      {
+        path: "/user",
+        element: <UsersTable />,
       },
     ],
   },
