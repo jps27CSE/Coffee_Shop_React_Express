@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const EditCoffee = () => {
   const params = useParams();
-
+  const [coffee, setCoffee] = useState(null);
+  console.log(coffee);
   useEffect(() => {
-    fetch();
+    fetch(`http://localhost:3000/coffee/${params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCoffee(data);
+      });
   }, [params]);
 
   const handleFormSubmit = (e) => {
@@ -31,8 +36,8 @@ const EditCoffee = () => {
       photo,
     };
 
-    fetch("http://localhost:3000/addCoffee", {
-      method: "POST",
+    fetch(`http://localhost:3000/coffee/${params.id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -61,6 +66,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5">Name</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.name}
                   name="name"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Name"
@@ -70,6 +76,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5">Chef</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.chef}
                   name="chef"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Chef"
@@ -79,6 +86,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5">Supplier</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.supplier}
                   name="supplier"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Supplier"
@@ -88,6 +96,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5">Taste</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.taste}
                   name="taste"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Taste"
@@ -97,6 +106,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5 ">Category</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.category}
                   name="category"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Category"
@@ -106,6 +116,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5 ">Details</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.details}
                   name="details"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="Details"
@@ -115,6 +126,7 @@ const EditCoffee = () => {
                 <p className="text-xl font-bold p-5">Photo URL</p>
                 <input
                   type="text"
+                  defaultValue={coffee?.photo}
                   name="photo"
                   className="input p-5 ml-3  w-[500px]"
                   placeholder="URL"
